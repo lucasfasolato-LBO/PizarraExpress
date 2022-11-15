@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+h1 {
+    color: #ffffff;
+    font-family: 'Roboto Slab';
+    font-size: 34px;
+    padding-top: 25px;
+    z-index: 100;
+}
+h2 {
+    color: #ffffff;
+    font-family: 'Roboto Slab';
+    font-size: 22px;
+}
+h3 {
+    color: #ffffff;
+    font-family: 'Roboto Slab';
+    font-size: 17px;
+    letter-spacing: 0.05em;
+}
+h4 {
+    color: #ffffff;
+    font-family: 'Roboto Slab';
+    font-size: 18px;
+    font-weight: 200;
+}
+.div_size {
+    position: relative;
+    display: block;
+    align-items: center;
+    margin: 0 auto;
+    width: 626px;
+    height: 524px;
+    overflow: hidden;
+}
+
+.fondorayas {
+    position: absolute;
+    top: -36%;
+    left: -14%;
+    z-index: 10;
+    transform: rotate(20deg);
+}
+
+.top_section {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    background-image: url('https://i.ibb.co/rGj2JfJ/fondo-top-div.png');
+    background-position:center;
+}
+
+.top_content {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.title {
+    height: 40%;
+    padding-top: 1vh;
+    width: 90%;
+    border-bottom: 1px solid #ffffff;
+    z-index: 100;
+}
+
+.title > h1{
+    z-index: 100;
+}
+
+.top_data {
+    position: relative;
+    width: 100%;
+    height: 60%;
+    display: block;
+}
+
+.img_top {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    right: -5px;
+    top: -36px;
+}
+
+.date {
+    height: 50%;
+    width: 100%;
+    line-height: 72px;
+}
+
+.tipoCambio {
+    height: 50%;
+    width: 100%;  
+    display: flex;
+    line-height: 22px;
+}
+
+#preciodolar {
+    margin-left: 8px;
+}
+
+.mid_section {
+    width: 100%;
+    height: 224px;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.mid_content {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+.table {
+    width: 95%;
+    height: 90%;
+    max-height: 90%;
+    margin: 0;
+    padding: 5% 2.5%;
+    display: block;
+    align-items: center;
+}
+
+.encabezado {
+    height: 32px;
+    width: 100%;
+    background-color: rgb(4, 120, 50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.column_grano {
+    width: 35%;
+    height: 100%;
+    text-align: left;
+    align-items: center;
+    line-height: 32px;
+}
+.column_grano > h2 {
+    padding-left: 16px;
+}
+
+.column_grano > .p_text {
+    padding-left: 16px;
+}
+.column_peso {
+    width: 31.7%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    line-height: 32px;
+}
+.column_dolar {
+    width: 33.3%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    line-height: 32px;
+}
+
+.p_text {
+    font-size: 20px;
+    color: rgb(1, 121, 55);
+    align-items: center;
+    font-family: 'Roboto';
+}
+
+.row_impar {
+    height: 32px;
+    width: 100%;
+    background-color: rgb(230, 225, 225);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.row_par {
+    height: 32px;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.bottom_section {
+    width: 100%;
+    height: 100px;
+    margin: 0;
+    background-color: #ffffff;
+    padding: 20px 0;
+}
+
+.fuenteBCR {
+    position: absolute;
+    font-size: 10px;
+    color: #666666;
+    right: 7.5%;
+    bottom: 16.5%;
+}
+
+.lboLogo {
+    display: block;
+    /* background-image: url('./logoLBO.png'); */
+    background-image: url('https://i.ibb.co/MNFXk28/logoLBO.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.actu_bttn {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 120px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.actu_bttn:hover{
+    background-color: #aaaaaa;
+}
+
+.descargar_bttn {
+    position: absolute;
+    top: 150px;
+    right: 50px;
+    width: 120px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.descargar_bttn:hover{
+    background-color: #aaaaaa;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla Precios</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet"  href="estilos.css" />
+</head>
+<body>
+    <div class="div_size" id="pizarra">
+        <img src="https://i.ibb.co/8bHxRBP/fondorayas.png" class="fondorayas"/>
+        <div class="top_section">
+            <div class="top_content">
+                <div class="title">
+                    <h1>PIZARRA ROSARIO</h1>
+                </div>
+                <div class="top_data">
+                    <img src="https://i.ibb.co/jWs0SdW/img-trigo-top.webp" alt="Imagen trigo" class="img_top"/>
+                    <div class="date"><h4 id="date"></h4></div>
+                    <div class="tipoCambio"><h3>Tipo de cambio: <h3 id="preciodolar"></h3></h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="mid_section">
+            <div class="mid_content">
+                <div class="table">
+                    <div class="encabezado">
+                        <div class="column_grano"><h2>Grano</h2></div>
+                        <div class="column_peso"><h2>$</h2></div>
+                        <div class="column_dolar"><h2>U$S</h2></div>
+                    </div>
+                    <div class="row_impar">
+                        <div class="column_grano"><p class="p_text" id="textsoja">Soja</p></div>
+                        <div class="column_peso"><p class="p_text" id="soja"></p></div>
+                        <div class="column_dolar"><p class="p_text" id="sojadolar">Precio dolar</p></div>
+                    </div>
+                    <div class="row_par">
+                        <div class="column_grano"><p class="p_text" id="textmaiz">Maiz</p></div>
+                        <div class="column_peso"><p class="p_text" id="maiz"></p></div>
+                        <div class="column_dolar"><p class="p_text" id="maizdolar">Precio dolar</p></div>
+                    </div>
+                    <div class="row_impar">
+                        <div class="column_grano"><p class="p_text" id="texttrigo">Trigo</p></div>
+                        <div class="column_peso"><p class="p_text" id="trigo"></p></div>
+                        <div class="column_dolar"><p class="p_text" id="trigodolar">Precio dolar</p></div>
+                    </div>
+                    <div class="row_par">
+                        <div class="column_grano"><p class="p_text" id="textgirasol">Girasol</p></div>
+                        <div class="column_peso"><p class="p_text" id="girasol"></p></div>
+                        <div class="column_dolar"><p class="p_text" id="girasoldolar">Precio dolar</p></div>
+                    </div>
+
+                    <div class="row_impar">
+                        <div class="column_grano"><p class="p_text" id="textsorgo">Sorgo</p></div>
+                        <div class="column_peso"><p class="p_text" id="sorgo"></p></div>
+                        <div class="column_dolar"><p class="p_text" id="sorgodolar">Precio dolar</p></div>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <p class="fuenteBCR">Fuente: Cámara arbitral de cereales BCR</p>
+        <div class="bottom_section">
+            <div class="lboLogo"></div>
+        </div>
+    </div>
+    <button class="descargar_bttn" id="btnCrearPdf">DESCARGAR PIZARRA</button>
+
+    <script src="html2canvas.js"></script>
+
+    <script>
+        const pizarra = document.getElementById("pizarra")
+        const desc = document.getElementById("btnCrearPdf");
+        function generateCanvas () {
+            html2canvas(pizarra, { 
+                useCORS:true
+            }).then(function(canvas) {               
+                document.body.appendChild(canvas);
+                canvas.setAttribute("id", "foto_canvas");
+                console.log(canvas);
+                var link = document.createElement('a');
+                link.download = 'Pizarra granos';
+                link.href = document.getElementById('foto_canvas').toDataURL()
+                link.click();
+            });
+        }
+        if(desc) {
+            desc.addEventListener("click",generateCanvas);
+        }
+    </script>
+    <script>
+        fetch('./data.json')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                let date = document.getElementById('date');
+
+
+                let textsoja = document.getElementById('textsoja');
+                let textmaiz = document.getElementById('textmaiz');
+                let texttrigo = document.getElementById('texttrigo');
+                let textgirasol = document.getElementById('textgirasol');
+                let textsorgo = document.getElementById('textsorgo');
+
+                if (data[4].length > 16) {
+                    textsoja.innerHTML = "Soja (estimado)"
+                } else {
+                    textsoja.innerHTML = "Soja"
+                }
+                if (data[2].length > 16) {
+                    textmaiz.innerHTML = "Maiz (estimado)"
+                } else {
+                    textmaiz.innerHTML = "Maiz"
+                }
+                if (data[1].length > 16) {
+                    texttrigo.innerHTML = "Trigo (estimado)"
+                } else {
+                    texttrigo.innerHTML = "Trigo"
+                }
+                if (data[3].length > 16) {
+                    textgirasol.innerHTML = "Girasol (estimado)"
+                } else {
+                    textgirasol.innerHTML = "Girasol"
+                }
+                if (data[5].length > 16) {
+                    textsorgo.innerHTML = "Sorgo (estimado)"
+                } else {
+                    textsorgo.innerHTML = "Sorgo"
+                }
+                let soja = document.getElementById('soja');
+                let maiz = document.getElementById('maiz');
+                let trigo = document.getElementById('trigo');
+                let girasol = document.getElementById('girasol');
+                let sorgo = document.getElementById('sorgo');
+                let preciodolar = document.getElementById('preciodolar')
+                date.innerHTML = data[0];
+                soja.innerHTML = data[4].substring(data[4].length - 9).slice(0, -3);
+                maiz.innerHTML = data[2].substring(data[2].length - 9).slice(0, -3);
+                trigo.innerHTML = data[1].substring(data[1].length - 9).slice(0, -3);
+                girasol.innerHTML = data[3].substring(data[3].length - 9).slice(0, -3);
+                sorgo.innerHTML = data[5].substring(data[5].length - 9).slice(0, -3);
+                preciodolar.innerHTML = data[6];
+                let sojavalue = data[4].substring(data[4].length - 9).replaceAll('.', '');
+                let maizvalue = data[2].substring(data[2].length - 9).replaceAll('.', '');
+                let trigovalue = data[1].substring(data[1].length - 9).replaceAll('.', '');
+                let girasolvalue = data[3].substring(data[3].length - 9).replaceAll('.', '');
+                let sorgovalue = data[5].substring(data[5].length - 9).replaceAll('.', '');
+                let dolarvalue = data[6].substring(data[6].length - 6).replaceAll(',', '.');
+                let sojaint = parseInt(sojavalue);
+                let maizint = parseInt (maizvalue);
+                let trigoint = parseInt (trigovalue);
+                let girasolint = parseInt (girasolvalue);
+                let sorgoint = parseInt (sorgovalue);
+                let dolarint = parseFloat(dolarvalue);
+                let sojadolar = document.getElementById('sojadolar');
+                let maizdolar = document.getElementById('maizdolar');
+                let trigodolar = document.getElementById('trigodolar');
+                let girasoldolar = document.getElementById('girasoldolar');
+                let sorgodolar = document.getElementById('sorgodolar');
+
+                sojadolar.innerHTML = (sojaint / dolarint).toFixed(2).replaceAll('.', ',');
+                maizdolar.innerHTML = (maizint / dolarint).toFixed(2).replaceAll('.', ',');
+                trigodolar.innerHTML = (trigoint / dolarint).toFixed(2).replaceAll('.', ',');
+                girasoldolar.innerHTML = (girasolint / dolarint).toFixed(2).replaceAll('.', ',');
+                sorgodolar.innerHTML = (sorgoint / dolarint).toFixed(2).replaceAll('.', ',');
+                
+
+                console.log(sojaint, maizint, trigoint, dolarint)
+
+            });
+    </script>
+</body>
+</html>
